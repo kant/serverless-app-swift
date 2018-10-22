@@ -1,0 +1,39 @@
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: master
+    service: ${REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: DATABASE_URL
+    value: "<url>"
+    type: text
+  - name: DATABASE
+    value: "products"
+    type: text
+  jobs:
+  - name: Deploy
+    type: deployer
+    artifact_dir: ''
+    build_type: shell
+    target:
+      region_id: ${REGION_ID}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
+    script: |-
+      #!/bin/bash
+      chmod +x .bluemix/pipeline-DEPLOY.sh
+      ./.bluemix/pipeline-DEPLOY.sh
