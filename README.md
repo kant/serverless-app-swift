@@ -63,7 +63,7 @@ Your application is deployed using the IBM Continuous Delivery pipeline. Your to
 
    Where &lt;url&gt; is the URL value from your Cloudant service credentials.
 
-   **IBM DevOps Deployment:** Once you have connected your app to IBM Devops by clicking on the "Deploy To Cloud" you need to add your Cloudant URL to the delivery pipeline environment varaibles. Note: this is a one-time action.
+   **IBM DevOps Deployment:** Once you have connected your app to IBM Devops by clicking on the "Deploy To Cloud" you need to add your Cloudant URL to the delivery pipeline environment variables. Note: this is a one-time action.
 
    First click on the "Cloudant" service link when viewing the app dashboard.  Then click on "Service Credentials", and then click on the "View Credentials" link for your Cloudant instance.  Copy the "url" value for use in the delivery pipeline.
 
